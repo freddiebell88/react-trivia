@@ -25,9 +25,16 @@ export function Trivia() {
 }
 
 const Categories = ({ category }) => {
+    const [showQuiz, setShowQuiz] = useState(false);
+
+    const handleClick = () => {
+        setShowQuiz(true);
+    }
+
     return(
         <>
-            <button>{category}</button>
+            <button onClick={handleClick}>{category}</button>
+            {showQuiz && <Quiz />}
         {/* <Quiz /> */}
         </>
     )
