@@ -5,22 +5,38 @@ import { Quiz } from './quiz'
 export function Trivia() {
     const [categories, setCategories] = useState([])
     const [selectedCat, setSelectedCat] = useState("")
+    const [questions, setQuestions] = useState([])
+    const [selectedCategoryId, setSelectedCategoryId] = useState(0)
     
     useEffect(() => {
         axios.get('https://opentdb.com/api_category.php').then((res) => setCategories(res.data.trivia_categories))
     }, [])
 
-    useEffect(() => {
-        // axios call to get quiz
-        // 
-    }, [selectedCat])
+    // useEffect(() => {
+    //     const oneQuizUrl = `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
+    //     axios.get(oneQuizUrl).then((res) => {
+    //         setQuestions(res.data)
+    //     })
+    // }, [selectedCat])
+    // this axios call depends on which category is selected
     // everytime selectedCat changes it will run this useEffect
 
+    const getCategoryId = (categoryId) => {
+        console.log('getCategoryId runs')
+        // setSelectedCat(categoryId)
+        setSelectedCategoryId(categoryId)
+        console.log(categoryId)
+    }
     if (selectedCat) {
         return (
             <>
+            <button onClick={() => setSelectedCat('')}>Pick a new category</button>
             <h2>{selectedCat}</h2>
-            <Quiz />
+            <Quiz 
+                selectedCat={selectedCat}
+                categoryId={selectedCategoryId}
+                setSelectedCat={setSelectedCat}
+            />
             </>
         )
     }
@@ -30,11 +46,13 @@ export function Trivia() {
         <h2>Categories</h2>
         <div className='categories'>
             {categories.map((category) => (
-                <Categories 
+                <Category 
                     key={(category.id)}
                     category={category.name}
                     selectedCat={selectedCat}
                     setSelectedCat={setSelectedCat}
+                    categoryId={category.id}
+                    getCategoryId={getCategoryId}
                 />
             ))}
         </div>
@@ -42,10 +60,10 @@ export function Trivia() {
     )
 }
 
-const Categories = ({ category, setSelectedCat }) => {
-
+const Category = ({ category, setSelectedCat, categoryId, getCategoryId }) => {
     const handleClick = () => {
         setSelectedCat(category);
+        getCategoryId(categoryId)
     }
 
     return(
