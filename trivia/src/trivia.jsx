@@ -31,11 +31,12 @@ export function Trivia() {
         return (
             <>
             <button onClick={() => setSelectedCat('')}>Pick a new category</button>
-            <h2>{selectedCat}</h2>
-            <Quiz 
+            <Quiz
+                key={questions.response_code}
                 selectedCat={selectedCat}
                 categoryId={selectedCategoryId}
                 setSelectedCat={setSelectedCat}
+                question={questions.question}
             />
             </>
         )
@@ -53,6 +54,8 @@ export function Trivia() {
                     setSelectedCat={setSelectedCat}
                     categoryId={category.id}
                     getCategoryId={getCategoryId}
+                    // question={questions.question}
+                    
                 />
             ))}
         </div>
