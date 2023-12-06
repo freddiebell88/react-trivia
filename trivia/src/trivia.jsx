@@ -12,14 +12,6 @@ export function Trivia() {
         axios.get('https://opentdb.com/api_category.php').then((res) => setCategories(res.data.trivia_categories))
     }, [])
 
-    // useEffect(() => {
-    //     const oneQuizUrl = `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
-    //     axios.get(oneQuizUrl).then((res) => {
-    //         setQuestions(res.data)
-    //     })
-    // }, [selectedCat])
-    // this axios call depends on which category is selected
-    // everytime selectedCat changes it will run this useEffect
 
     const getCategoryId = (categoryId) => {
         console.log('getCategoryId runs')
@@ -36,7 +28,6 @@ export function Trivia() {
                 selectedCat={selectedCat}
                 categoryId={selectedCategoryId}
                 setSelectedCat={setSelectedCat}
-                // question={questions.results.question}
             />
             </>
         )
@@ -54,7 +45,7 @@ export function Trivia() {
                     setSelectedCat={setSelectedCat}
                     categoryId={category.id}
                     getCategoryId={getCategoryId}
-                    // question={questions.question}
+                    
                     
                 />
             ))}

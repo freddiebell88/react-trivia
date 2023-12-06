@@ -2,9 +2,8 @@ import axios from 'axios'
 import {useState, useEffect} from 'react'
 
 
-export function Quiz({ selectedCat, categoryId, setSelectedCat, question}) {
+export function Quiz({ selectedCat, categoryId }) {
 
-// const [index, setIndex] = useState(0)
 const [questions, setQuestions] = useState([])
 useEffect(() => {
     const quizUrl = `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
