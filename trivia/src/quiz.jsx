@@ -22,39 +22,37 @@ if (loading) {
         <h1>LOADING...</h1>
     )
 }
+
+const handleNextQuestion = () => {
+    setIndex(index + 1)}
+
+
     return(
         <>
         <h2>{selectedCat}</h2>
         <h2>Quiz</h2>
         <div>
-            {/* <p>{questions[index].question}</p>
-            <p>{questions[index].correct_answer}</p>
-            {questions[index].incorrect_answers.map((incorrect) => (
-            <p key={index}>{incorrect}</p>
-            ))} */}
-            {/* <div>{questions[index].question}</div> */}
-            {/* {questions.map((question) =>  */}
-                 <Question
-                    key={questions[index].id}
-                    question={questions[index].question}
-                    correct_answer={questions[index].correct_answer}
-                    incorrect_answers={questions[index].incorrect_answers}
-                />
-                {/* )} */}
+            <Question
+                key={questions[index].id}
+                question={questions[index].question}
+                correct_answer={questions[index].correct_answer}
+                incorrect_answers={questions[index].incorrect_answers}
+            />
         </div>
+                <button onClick={handleNextQuestion}>Next Question</button>
         
         </>
     )
 }
 
-function Question( {question, correct_answer, incorrect_answers} ) {
-    console.log(typeof(question, correct_answer, incorrect_answers))
+function Question( {question, correct_answer, incorrect_answers, index, setIndex} ) {
+    
     const answers = [...incorrect_answers, correct_answer];
     const shuffledAnswers = shuffle(answers)
     const [selectedAnswer, setSelectedAnswer] = useState('')
     
-    const handleAnswerSelection = (answer) => {
-        // answer.preventDefault();
+    
+    const handleAnswerSelection = (answer) => {  
         if (answer === correct_answer) {
             setSelectedAnswer(true)
             console.log('yahoo')
