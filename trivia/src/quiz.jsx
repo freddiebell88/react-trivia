@@ -6,27 +6,41 @@ export function Quiz({ selectedCat, categoryId }) {
 
 const [questions, setQuestions] = useState([])
 const [index, setIndex] = useState(0)
+const [loading, setLoading] = useState(true)
 
 useEffect(() => {
     const quizUrl = `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
     axios.get(quizUrl).then((res) => {
+        setLoading(false)
         console.log(res.data)
         setQuestions(res.data.results)
     })
 }, [categoryId])
+
+if (loading) {
+    return (
+        <h1>LOADING...</h1>
+    )
+}
     return(
         <>
         <h2>{selectedCat}</h2>
         <h2>Quiz</h2>
         <div>
-            {questions.map((question) =>
-                <Question
-                    key={question.question}
-                    question={question.question}
-                    correct_answer={question.correct_answer}
-                    incorrect_answers={question.incorrect_answers}
+            {/* <p>{questions[index].question}</p>
+            <p>{questions[index].correct_answer}</p>
+            {questions[index].incorrect_answers.map((incorrect) => (
+            <p key={index}>{incorrect}</p>
+            ))} */}
+            {/* <div>{questions[index].question}</div> */}
+            {/* {questions.map((question) =>  */}
+                 <Question
+                    key={questions[index].id}
+                    question={questions[index].question}
+                    correct_answer={questions[index].correct_answer}
+                    incorrect_answers={questions[index].incorrect_answers}
                 />
-                )}
+                {/* )} */}
         </div>
         
         </>
@@ -34,7 +48,7 @@ useEffect(() => {
 }
 
 function Question( {question, correct_answer, incorrect_answers} ) {
-
+    console.log(typeof(question, correct_answer, incorrect_answers))
     const answers = [...incorrect_answers, correct_answer];
     const shuffledAnswers = shuffle(answers)
     const [selectedAnswer, setSelectedAnswer] = useState('')
