@@ -33,26 +33,40 @@ useEffect(() => {
     )
 }
 
-function Question( {question, correct_answer, incorrect_answers, index} ) {
+function Question( {question, correct_answer, incorrect_answers} ) {
 
     const answers = [...incorrect_answers, correct_answer];
     const shuffledAnswers = shuffle(answers)
+    const [selectedAnswer, setSelectedAnswer] = useState('')
     
-    
+    const handleAnswerSelection = (answer) => {
+        // answer.preventDefault();
+        if (answer === correct_answer) {
+            setSelectedAnswer(true)
+            console.log('yahoo')
+        } else {
+            setSelectedAnswer(false)
+            console.log('ha yeah right you idiot')
+        }
+    }
+
     return(
         <>
         <div className='questionCard'>
             <p>{question}</p>
             <div>
                 {shuffledAnswers.map((answer, index) => {
-                    return <button key={index}>{answer}</button>
+                    return <button onClick={ () => handleAnswerSelection(answer)} key={index}>{answer}</button>
                 })}
             </div>
-            {/* <p>{correct_answer}</p>
-            <p>{incorrect_answers}</p> */}
         </div>
-        {/* <button>Next Question</button> */}
         </>
     )
-    
 }
+
+// function Answers({ correct_answer, incorrect_answers}) {
+
+//     return(
+
+//     )
+// }

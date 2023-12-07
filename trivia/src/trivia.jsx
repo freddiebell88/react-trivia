@@ -55,7 +55,7 @@ export function Trivia() {
 }
 
 const Category = ({ category, setSelectedCat, categoryId, getCategoryId }) => {
-    const [index, setIndex] = useState(0)
+    // const [index, setIndex] = useState(0)
     const handleClick = () => {
         setSelectedCat(category);
         getCategoryId(categoryId)
