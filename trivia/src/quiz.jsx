@@ -19,14 +19,14 @@ useEffect(() => {
         <h2>{selectedCat}</h2>
         <h2>Quiz</h2>
         <div>
-            
+            {questions.map((question) =>
                 <Question
-                    key={questions.question}
-                    question={questions.question}
-                    correct_answer={questions.correct_answer}
-                    incorrect_answers={questions.incorrect_answers}
+                    key={question.question}
+                    question={question.question}
+                    correct_answer={question.correct_answer}
+                    incorrect_answers={question.incorrect_answers}
                 />
-            
+                )}
         </div>
         
         </>
@@ -35,7 +35,7 @@ useEffect(() => {
 
 function Question( {question, correct_answer, incorrect_answers, index} ) {
 
-    // const answers = [...incorrect_answers, correct_answer];
+    const answers = [...incorrect_answers, correct_answer];
 
     
     
@@ -43,15 +43,15 @@ function Question( {question, correct_answer, incorrect_answers, index} ) {
         <>
         <div className='questionCard'>
             <p>{question}</p>
-            {/* <div>
+            <div>
                 {answers.map((answer) => {
-                    return <button key={question}>{answer}</button>
+                    return <button key={index}>{answer}</button>
                 })}
-            </div> */}
-            <p>{correct_answer}</p>
-            <p>{incorrect_answers}</p>
+            </div>
+            {/* <p>{correct_answer}</p>
+            <p>{incorrect_answers}</p> */}
         </div>
-        <button>Next Question</button>
+        {/* <button>Next Question</button> */}
         </>
     )
     
