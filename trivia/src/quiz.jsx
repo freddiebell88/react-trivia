@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-
+import { shuffle } from 'lodash'
 
 export function Quiz({ selectedCat, categoryId }) {
 
@@ -36,7 +36,7 @@ useEffect(() => {
 function Question( {question, correct_answer, incorrect_answers, index} ) {
 
     const answers = [...incorrect_answers, correct_answer];
-
+    const shuffledAnswers = shuffle(answers)
     
     
     return(
@@ -44,7 +44,7 @@ function Question( {question, correct_answer, incorrect_answers, index} ) {
         <div className='questionCard'>
             <p>{question}</p>
             <div>
-                {answers.map((answer) => {
+                {shuffledAnswers.map((answer, index) => {
                     return <button key={index}>{answer}</button>
                 })}
             </div>
