@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { shuffle } from 'lodash'
 import he from 'he'
 
-export function Quiz({ selectedCat, setSelectedCat, categoryId }) {
+export function Quiz({ selectedCat, setSelectedCat, categoryId, category }) {
 
     const [questions, setQuestions] = useState([])
     const [index, setIndex] = useState(0)
@@ -26,21 +26,13 @@ if (loading) {
     )
 }
 
-const handleNextQuestion = () => {
-    if (complete) {
-        setSelectedCat('')
-    } else if (index === 9) {
-        setComplete(true)
-    } else {
-        setIndex(index + 1)
-        setSelectedAnswer('')}}
+
 
 
     return(
         <>
         <h2>{selectedCat}</h2>
         <h2>Quiz</h2>
-        <p>Choose wisely...you get only one chance...</p>
         <div>
             <Question
                 key={questions[index].id}
@@ -55,8 +47,6 @@ const handleNextQuestion = () => {
                 setComplete={setComplete}
             />
         </div>
-                {/* <button disabled={!selectedAnswer} onClick={handleNextQuestion}>{complete ? "Play Again" : "Next Question" }</button> */}
-        
         </>
     )
 }
@@ -83,10 +73,12 @@ const handleAnswerSelection = (answer) => {
 }
 
 
+
     return(
         <>
         {!complete ? <div>
         <div className='questionCard'>
+            <p>Choose wisely...you get only one chance...</p>
             <p>{he.decode(question)}</p>
             <div>
                 {shuffledAnswers.map((answer, index) => {
@@ -99,12 +91,11 @@ const handleAnswerSelection = (answer) => {
         :
         <div className='scoreCard'>
             <p>Your score is</p>
-            <p>{score}/10</p>
-            <button>Play Again</button>
+            <p className='score'>{score}/10</p>
             
         </div>}
         </>
     )
 }
-// play again button for new quiz in same category
+
 
