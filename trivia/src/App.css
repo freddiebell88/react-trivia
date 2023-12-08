@@ -2,9 +2,20 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  
 }
 
+/* .categories{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
 .questionCard {
-  border: 2px solid blue;
+  border: 10px dotted rgb(128, 0, 255);
+  padding: 2em;
+}
+
+.warning{
+  font-style: italic;
+  font-size: small;
 }

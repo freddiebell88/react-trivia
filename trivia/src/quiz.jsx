@@ -22,12 +22,9 @@ useEffect(() => {
 
 if (loading) {
     return (
-        <h1>LOADING...</h1>
+        <h1>LOADING...⏳</h1>
     )
 }
-
-
-
 
     return(
         <>
@@ -59,14 +56,14 @@ const [score, setScore] = useState(0)
 
 const handleAnswerSelection = (answer) => {  
     if (answer === correct_answer) {
-        setSelectedAnswer(true)
+        setSelectedAnswer("Look at you, that's correct!")
         setScore(score + 1)
         setIndex(index + 1)
         console.log('yahoo')
     } else if(index === 9) {
         setComplete(true)
     } else {
-        setSelectedAnswer('wrong')
+        setSelectedAnswer('Whoops! Wrong!')
         setIndex(index + 1)
         console.log('ha yeah right you idiot')
     } 
@@ -78,7 +75,7 @@ const handleAnswerSelection = (answer) => {
         <>
         {!complete ? <div>
         <div className='questionCard'>
-            <p>Choose wisely...you get only one chance...</p>
+            <p className='warning'>Choose wisely...you get only one chance...</p>
             <p>{he.decode(question)}</p>
             <div>
                 {shuffledAnswers.map((answer, index) => {
@@ -86,7 +83,7 @@ const handleAnswerSelection = (answer) => {
                 })}
             </div>
         </div>
-        <div>{score}</div>
+        <div>{selectedAnswer}</div>
         </div>
         :
         <div className='scoreCard'>

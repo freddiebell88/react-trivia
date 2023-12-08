@@ -2,7 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: lightpink;
+  background-color: rgb(17, 17, 112);
+  color: white;
 }
 /*
   color-scheme: light dark;
@@ -39,7 +40,7 @@ h1 {
 */
 button {
   border-radius: 8px;
-  border: 1px solid rgb(234, 27, 62);
+  border: 5px solid rgb(220, 234, 27);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
