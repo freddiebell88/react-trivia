@@ -40,6 +40,7 @@ const handleNextQuestion = () => {
         <>
         <h2>{selectedCat}</h2>
         <h2>Quiz</h2>
+        <p>Choose wisely...you get only one chance...</p>
         <div>
             <Question
                 key={questions[index].id}
@@ -54,7 +55,7 @@ const handleNextQuestion = () => {
                 setComplete={setComplete}
             />
         </div>
-                <button disabled={!selectedAnswer} onClick={handleNextQuestion}>{complete ? "Play Again" : "Next Question" }</button>
+                {/* <button disabled={!selectedAnswer} onClick={handleNextQuestion}>{complete ? "Play Again" : "Next Question" }</button> */}
         
         </>
     )
@@ -70,13 +71,15 @@ const handleAnswerSelection = (answer) => {
     if (answer === correct_answer) {
         setSelectedAnswer(true)
         setScore(score + 1)
-        // setIndex(index + 1)
+        setIndex(index + 1)
         console.log('yahoo')
+    } else if(index === 9) {
+        setComplete(true)
     } else {
         setSelectedAnswer('wrong')
-        // setIndex(index + 1)
+        setIndex(index + 1)
         console.log('ha yeah right you idiot')
-    }
+    } 
 }
 
 
@@ -87,18 +90,21 @@ const handleAnswerSelection = (answer) => {
             <p>{he.decode(question)}</p>
             <div>
                 {shuffledAnswers.map((answer, index) => {
-                    return <button disabled={selectedAnswer != ''} onClick={ () => handleAnswerSelection(answer)} key={index}>{he.decode(answer)}</button>
+                    return <button onClick={ () => handleAnswerSelection(answer)} key={index}>{he.decode(answer)}</button>
                 })}
             </div>
         </div>
         <div>{score}</div>
         </div>
         :
-        <div className='questionCard'>
+        <div className='scoreCard'>
             <p>Your score is</p>
             <p>{score}/10</p>
-            </div>}
+            <button>Play Again</button>
+            
+        </div>}
         </>
     )
 }
+// play again button for new quiz in same category
 
