@@ -1,12 +1,15 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import { shuffle } from 'lodash'
+import he from 'he'
 
-export function Quiz({ selectedCat, categoryId }) {
+export function Quiz({ selectedCat, setSelectedCat, categoryId }) {
 
-const [questions, setQuestions] = useState([])
-const [index, setIndex] = useState(0)
-const [loading, setLoading] = useState(true)
+    const [questions, setQuestions] = useState([])
+    const [index, setIndex] = useState(0)
+    const [loading, setLoading] = useState(true)
+    const [selectedAnswer, setSelectedAnswer] = useState('')
+    const [complete, setComplete] = useState(false)
 
 useEffect(() => {
     const quizUrl = `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
@@ -24,7 +27,13 @@ if (loading) {
 }
 
 const handleNextQuestion = () => {
-    setIndex(index + 1)}
+    if (complete) {
+        setSelectedCat('')
+    } else if (index === 9) {
+        setComplete(true)
+    } else {
+        setIndex(index + 1)
+        setSelectedAnswer('')}}
 
 
     return(
@@ -37,48 +46,59 @@ const handleNextQuestion = () => {
                 question={questions[index].question}
                 correct_answer={questions[index].correct_answer}
                 incorrect_answers={questions[index].incorrect_answers}
+                index={index}
+                setIndex={setIndex}
+                selectedAnswer={selectedAnswer}
+                setSelectedAnswer={setSelectedAnswer}
+                complete={complete}
+                setComplete={setComplete}
             />
         </div>
-                <button onClick={handleNextQuestion}>Next Question</button>
+                <button disabled={!selectedAnswer} onClick={handleNextQuestion}>{complete ? "Play Again" : "Next Question" }</button>
         
         </>
     )
 }
 
-function Question( {question, correct_answer, incorrect_answers, index, setIndex} ) {
+function Question( {question, correct_answer, incorrect_answers, index, setIndex, selectedAnswer, setSelectedAnswer, complete, setComplete} ) {
     
-    const answers = [...incorrect_answers, correct_answer];
-    const shuffledAnswers = shuffle(answers)
-    const [selectedAnswer, setSelectedAnswer] = useState('')
-    
-    
-    const handleAnswerSelection = (answer) => {  
-        if (answer === correct_answer) {
-            setSelectedAnswer(true)
-            console.log('yahoo')
-        } else {
-            setSelectedAnswer(false)
-            console.log('ha yeah right you idiot')
-        }
+const answers = [...incorrect_answers, correct_answer];
+const shuffledAnswers = shuffle(answers)
+const [score, setScore] = useState(0)
+
+const handleAnswerSelection = (answer) => {  
+    if (answer === correct_answer) {
+        setSelectedAnswer(true)
+        setScore(score + 1)
+        // setIndex(index + 1)
+        console.log('yahoo')
+    } else {
+        setSelectedAnswer('wrong')
+        // setIndex(index + 1)
+        console.log('ha yeah right you idiot')
     }
+}
+
 
     return(
         <>
+        {!complete ? <div>
         <div className='questionCard'>
-            <p>{question}</p>
+            <p>{he.decode(question)}</p>
             <div>
                 {shuffledAnswers.map((answer, index) => {
-                    return <button onClick={ () => handleAnswerSelection(answer)} key={index}>{answer}</button>
+                    return <button disabled={selectedAnswer != ''} onClick={ () => handleAnswerSelection(answer)} key={index}>{he.decode(answer)}</button>
                 })}
             </div>
         </div>
+        <div>{score}</div>
+        </div>
+        :
+        <div className='questionCard'>
+            <p>Your score is</p>
+            <p>{score}/10</p>
+            </div>}
         </>
     )
 }
 
-// function Answers({ correct_answer, incorrect_answers}) {
-
-//     return(
-
-//     )
-// }
