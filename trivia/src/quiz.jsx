@@ -59,13 +59,11 @@ const handleAnswerSelection = (answer) => {
         setSelectedAnswer("Look at you, that's correct!")
         setScore(score + 1)
         setIndex(index + 1)
-        console.log('yahoo')
     } else if(index === 9) {
         setComplete(true)
     } else {
         setSelectedAnswer('Whoops! Wrong!')
         setIndex(index + 1)
-        console.log('ha yeah right you idiot')
     } 
 }
 
