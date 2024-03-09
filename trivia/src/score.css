@@ -1,0 +1,79 @@
+:root {
+    --angle: 45deg;
+    --opacity: 0.5;
+}
+
+*,
+*::before, 
+*::after {
+    box-sizing: border-box;
+}
+
+.score {
+    width: 400px;
+    height: 250px;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: auto;
+
+    display: grid;
+    place-content: center;
+    text-align: center;
+
+    font-size: 3.5em;
+    color: rgb(6, 151, 151);
+    text-shadow: 2px 2px 2px rgb(220, 234, 27);
+
+    --border-size: 0.5rem;
+
+    border: var(--border-size) dotted transparent;
+
+    background-image: linear-gradient(
+        to right,
+        rgb(255 255 255 / var(--opacity)), 
+        rgb(255 255 255 / var(--opacity))
+    ),
+    conic-gradient(
+        from var(--angle), 
+        #d53e33 0deg 90deg,
+        #fbb300 90deg 180deg,
+        #377af5 180deg 270deg,
+        #399953 270deg 360deg
+    )
+    ;
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+}
+
+@supports (background: paint(houdini)) {
+    @property --opacity {
+        syntax: "<number>";
+        initial-value: 0.5;
+        inherits: false;
+    }
+
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes opacityChange {
+        to {
+            --opacity: 1;
+        }
+    }
+    
+    @keyframes rotate {
+        to {
+            --angle: 360deg;
+        }
+    }
+}
+
+.score {
+    animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+  }
+
