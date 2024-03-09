@@ -29,7 +29,6 @@ if (loading) {
     return(
         <>
         <h2 className='title'>{selectedCat}</h2>
-        <h2 className='title'>Quiz</h2>
         <div>
             <Question
                 key={questions[index].id}
