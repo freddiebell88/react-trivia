@@ -34,8 +34,8 @@ export function Trivia() {
     }
     return(
         <>
-        <h1>TRIVIA!</h1>
-        <h2>Categories</h2>
+        <h1 className='page-title title'>TRIVIA!</h1>
+        <h2 className='title'>Categories</h2>
         <div className='categories'>
             {categories.map((category) => (
                 <Category 
