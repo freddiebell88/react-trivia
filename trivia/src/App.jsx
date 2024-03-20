@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import './App.css'
 import './score.css'
-import { Trivia } from './trivia'
+import { Trivia } from './components/trivia'
 
 function App() {
 

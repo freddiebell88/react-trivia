@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Quiz } from './quiz'
+import { CategoryButton } from './category'
 
 export function Trivia() {
     const [categories, setCategories] = useState([])
@@ -14,10 +15,7 @@ export function Trivia() {
 
 
     const getCategoryId = (categoryId) => {
-        console.log('getCategoryId runs')
-        // setSelectedCat(categoryId)
         setSelectedCategoryId(categoryId)
-        console.log(categoryId)
     }
     if (selectedCat) {
         return (
@@ -38,7 +36,7 @@ export function Trivia() {
         <h2 className='title'>Categories</h2>
         <div className='categories'>
             {categories.map((category) => (
-                <Category 
+                <CategoryButton 
                     key={(category.id)}
                     category={category.name}
                     selectedCat={selectedCat}
@@ -54,16 +52,16 @@ export function Trivia() {
     )
 }
 
-const Category = ({ category, setSelectedCat, categoryId, getCategoryId }) => {
-    // const [index, setIndex] = useState(0)
-    const handleClick = () => {
-        setSelectedCat(category);
-        getCategoryId(categoryId)
-    }
+// const Category = ({ category, setSelectedCat, categoryId, getCategoryId }) => {
+//     // const [index, setIndex] = useState(0)
+//     const handleClick = () => {
+//         setSelectedCat(category);
+//         getCategoryId(categoryId)
+//     }
 
-    return(
-        <>
-            <button onClick={handleClick}>{category}</button>
-        </>
-    )
-}
+//     return(
+//         <>
+//             <button onClick={handleClick}>{category}</button>
+//         </>
+//     )
+// }
