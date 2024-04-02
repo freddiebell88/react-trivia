@@ -1,20 +1,17 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/WtnZWOD5)
 # React Trivia Game
 
-For this project, you will use React to build a trivia game powered by [the Open Trivia Database](https://opentdb.com/).
+For this project, I used React to build a trivia game powered by [the Open Trivia Database](https://opentdb.com/).
 
-This project does not include any wireframes: you will have to design the game yourself.
+The user selects a category and then answers 10 questions within that category. They can then select another category.
 
-One way to implement this is to present the user with a list of categories. A user can choose a category, and then answer questions within that category. That's not the only way you could do this; you're welcome to be creative.
+## Skills built in this project
 
-## Skills you're building in this project
+- Planning and building an application that needs multiple components
+- Gaining more experience using state in React
+- Fetching data from a third-party API and use it in your React application
+- Understanding React data flow
 
 Doing this project, you will...
-
-- Plan and build an application that needs multiple components
-- Gain more experience using state in React
-- Fetch data from a third-party API and use it in your React application
-- Understand React data flow
 
 ## Definition of Done: what the project should do and look like when it is finished
 
@@ -42,7 +39,7 @@ This list is not necessarily in the order in which you should build these parts 
 
 ### Thoroughly investigate the API you're using
 
-You will need to spend time understanding the [Open Trivia Database API](https://opentdb.com/) to see what kind of data you are working with and the different options that the API gives you. This might give you some ideas for things you want to do in your application. 
+You will need to spend time understanding the [Open Trivia Database API](https://opentdb.com/) to see what kind of data you are working with and the different options that the API gives you. This might give you some ideas for things you want to do in your application.
 
 [Read the Open Trivia API documentation](https://opentdb.com/api_config.php).
 
@@ -56,7 +53,7 @@ You will find it helpful to use a tool like [Insomnia](https://insomnia.rest/) t
 
 ### Plan components
 
-Figuring out what you want the user to see and do will help you plan the components you need. Things that change on the page as a result of fetching data or user interaction are things that belong in state in React. 
+Figuring out what you want the user to see and do will help you plan the components you need. Things that change on the page as a result of fetching data or user interaction are things that belong in state in React.
 
 You may want to start with one big component that you then break down into smaller ones. A good way to think about this: each component should have one job.
 
@@ -64,7 +61,7 @@ You should outline this on paper (or a Google doc, or whatever) before you start
 
 ### Scaffold the application with Vite
 
-Create a new React application using [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project). 
+Create a new React application using [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
 
 When you are ready to write code, **your first task should be getting categories to show up on the page**.
 
@@ -74,7 +71,7 @@ At each step, think about what the user wants to do. After they select a categor
 
 ## Minimum Progress Benchmarks
 
- The following lists are provided as a guide to help you stay on track. Your pace may be slightly different, but you will find it hard to finish the project on time if you are significantly behind these benchmarks.
+The following lists are provided as a guide to help you stay on track. Your pace may be slightly different, but you will find it hard to finish the project on time if you are significantly behind these benchmarks.
 
 ### Day One Goals
 
@@ -123,7 +120,7 @@ At each step, think about what the user wants to do. After they select a categor
 
 Using the data from [this Jeopardy-inspired API](http://jservice.io/), which provides content from Jeopardy, will require a different approach. You won't be able to provide multiple choice questions, but instead will need to allow the user to type an answer and check if the answer matches the correct answer text. We have not covered forms in React yet, so you will have to do some advance reading to figure out how to do this.
 
-You can design this quiz however you like, from replicating Jeopardy-style gameplay to something completely different. You should provide the same kind of feedback to the user that you would for a multiple choice quiz: show them how many questions they got right or some kind of score. 
+You can design this quiz however you like, from replicating Jeopardy-style gameplay to something completely different. You should provide the same kind of feedback to the user that you would for a multiple choice quiz: show them how many questions they got right or some kind of score.
 
 ## 🌶️ Spicy Options
 
@@ -135,7 +132,7 @@ Once you have the minimum functionality, you should implement as many spicy opti
 - Create a win condition and some way to indicate that a user has won. You could consider using animations or something delightful like [react-confetti](https://github.com/alampros/react-confetti) to celebrate wins.
 - Use animations for interactions and/or transitions. There are many different React animation libraries you could try, but here are a few of the most widely used: [React Framer Motion](https://github.com/framer/motion), [React Spring](https://github.com/pmndrs/react-spring), [React TsParticles](https://github.com/matteobruni/tsparticles), [React Motion](https://github.com/chenglou/react-motion), [React Transition Group](https://reactcommunity.org/react-transition-group/)
 - Integrate a timer into your trivia application. For example, you could impose a time limit on answering questions and mark a question wrong if there is no guess before the timer runs out. Or, you could see how many questions your user can answer in a certain amount of time. Consider using local storage to store times and show the user their personal best times.
-- Show users their average score for each category, or a an average score for all categories. You will need a place to store scores for each category. You can use local storage for this. 
+- Show users their average score for each category, or a an average score for all categories. You will need a place to store scores for each category. You can use local storage for this.
 - When a user correctly answers all the questions in a category, they earn a badge that is displayed somewhere on the screen. The badge could be a simple image, or a font icon, or something from a CSS library. Or you could award badges for achievements like a win streak or a high score. You can be creative with this idea.
 - Implement a social share feature so your user can easily share their score on social media. This could be as fancy or straightforward as you want it to be.
 - Use any React library that looks interesting to you. [Here are some things to browse through](https://github.com/enaqx/awesome-react). [Here are some more](https://github.com/brillout/awesome-react-components).
@@ -149,5 +146,5 @@ Some things you are likely to want to do:
 - Get list of categories: https://opentdb.com/api_category.php
 - Get 10 questions: https://opentdb.com/api.php?amount=10
 - If you add a session token you won't receive the same question twice
-    - Get a token: https://opentdb.com/api_token.php?command=request
-    - Add a token to a request: `&token=YOURTOKENHERE`
+  - Get a token: https://opentdb.com/api_token.php?command=request
+  - Add a token to a request: `&token=YOURTOKENHERE`
