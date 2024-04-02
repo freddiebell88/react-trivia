@@ -53,11 +53,11 @@ h2 {
     top: -50%;
     width: 200%;
     height: 200%;
-    background-color: #1a232a;
+    background-color: rgb(17, 17, 112);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-image: conic-gradient(
-      transparent, rgba(168, 239, 255, 1), transparent 30%);
+      transparent, rgb(220, 234, 27), transparent 30%);
     animation: animate 2s linear infinite;
   }
 
@@ -69,7 +69,7 @@ h2 {
 		top: 6px;
 		width: calc(100% - 12px);
 		height: calc(100% - 12px);
-		background: #000;
+		background: rgb(17, 17, 112);
 		border-radius: 5px;
   }
 }
