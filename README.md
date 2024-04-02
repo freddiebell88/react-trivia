@@ -11,7 +11,12 @@ The user selects a category and then answers 10 questions within that category. 
 - Fetching data from a third-party API and use it in your React application
 - Understanding React data flow
 
-Doing this project, you will...
+## Currently I am...
+
+- adding pure CSS animations as well as animation components from Framer Motion
+- developing new features, such as tracking high scores, win conditions, and sound effects
+
+<!-- Doing this project, you will...
 
 ## Definition of Done: what the project should do and look like when it is finished
 
@@ -147,4 +152,4 @@ Some things you are likely to want to do:
 - Get 10 questions: https://opentdb.com/api.php?amount=10
 - If you add a session token you won't receive the same question twice
   - Get a token: https://opentdb.com/api_token.php?command=request
-  - Add a token to a request: `&token=YOURTOKENHERE`
+  - Add a token to a request: `&token=YOURTOKENHERE` -->
