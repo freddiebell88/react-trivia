@@ -7,6 +7,7 @@ export function Question( {question, correct_answer, incorrect_answers, index, s
     const answers = [...incorrect_answers, correct_answer];
     const shuffledAnswers = shuffle(answers)
     const [score, setScore] = useState(0)
+    // const [winningScore, setWinningScore] = useState(0)
     
     const handleAnswerSelection = (answer) => {  
         if (answer === correct_answer) {
@@ -18,7 +19,7 @@ export function Question( {question, correct_answer, incorrect_answers, index, s
         } else {
             setSelectedAnswer('Whoops! Wrong!')
             setIndex(index + 1)
-        } 
+        }
     }
     
     
@@ -41,8 +42,23 @@ export function Question( {question, correct_answer, incorrect_answers, index, s
             <div className='scoreCard'>
                 <p>Your score is</p>
                 <p className='score'>{score}/10</p>
-                
+                <WinOrLose />
             </div>}
+            
             </>
         )
     }
+
+export function WinOrLose({score}) {
+    const [winningScore, setWinningScore] = useState(8)
+
+    if (score >= winningScore) {
+        return (
+            <div>You win!</div>
+        )
+    } else {
+        return (
+            <div>You lose! Try again!</div>
+        )
+    }
+}
