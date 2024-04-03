@@ -54,11 +54,11 @@ export function WinOrLose({score}) {
 
     if (score >= winningScore) {
         return (
-            <div>You win!</div>
+            <p>You win!</p>
         )
     } else {
         return (
-            <div>You lose! Try again!</div>
+            <div className='lose'>You lose! Try again!</div>
         )
     }
 }

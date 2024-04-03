@@ -11,12 +11,6 @@
   --opacity: 0.5;
 }
 
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 *, *::before, *::after {
 	box-sizing: border-box;
 }
@@ -107,4 +101,20 @@ h2 {
 
 .score{
   --border-size: .5rem;
+}
+
+@keyframes color_change {
+  from {color: white;}
+  to {color: red;}
+}
+
+.scoreCard {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.lose {
+  justify-self: center;
+  animation: color_change 1s infinite alternate;
 }
